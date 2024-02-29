@@ -1,0 +1,4 @@
+DTO's pozwala nam na ukrywanie niektórych zmiennych oraz odesłanie też
+wybranych danych
+- Przykład:
+    Gdy użytkownik się zaloguje dostaje nazwe/email/haslo itd jako zwrot, a nie chcemy zwracać np. hasła.

@@ -1,0 +1,70 @@
+dotnet watch - HotReload
+ng serve - Angular run
+
+mkcert - Program do tworzenia certyfikatu
+ 
+dotnet ef migrations add NAZWA - Dodaje migracje
+dotnet ef database update - Aktualizacja (Dodanie migracji)
+dotnet ef migrations remove - Usuniecie migracji jesli nie dodano za pomoca "ef update"
+
+using var hmac = new HMACSHA512() - Tworzy randomowy klucz do hasowania.                //using - po uzyciu automatycznie wykasuje sie z pamieci i nie zostaje.
+
+ALT + Shift + F                 - Format c#
+
+
+
+[Authorize]           -Tylko autoryzowani uzytkownicy za pomocą JWT tokenu
+[AllowAnonymus]       -Dla niezautoryzowanych.
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                   ANGULAR
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- ng g --help                     -Lista generowania
+- ng g class [name]               -Generuje klase o nazwie ..
+- ng g component [name]           // Mozna tez pisac skrotem ng g c [nazwa] 
+- ng g service [name]           // skrot ng g s [nazwa]  - Tworzy serwis.     // --dry-run - Pozwala na zobaczenie co stworzy oraz gdzie.
+                                         // !Np. ng g s _services/account --skip-tests   - Tworzy w istniejacym folderze serwis account i pomija tworzenie pliku testowego
+
+.subscribe({                         // Pozwala nam na obsługę asynchronicznych operacji i zareagowanie na te dane, gdy staną się dostępne.
+      next: response=> {
+        console.log(response);
+      }})
+- *ngif=[]                       - USUWA nam element z HTML. //   [hidden]="" ukrywa nam element. 
+
+
+  private currentUserSource = new BehaviorSubject<User | null>(null);   // - BehaviorSubject jest multicast'em i jest dostepny dla wszystkich 
+                                                                            subskrybentów.
+  currentUser$ = this.currentUserSource.asObservable();               // - asObservable() - Blokuje dostęp do metody .next() i nadpisywania Behavior...
+
+- @Output() xx = new EventEmitter();                                 // - Wysylanie z DZIECKA do RODZICA jakiejs wartosci.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                      HTML
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- <form #Nazwa="ngForm">         - (Po dodaniu odpowiedniej biblioteki.) Pozwala nam na utworzenie angularowego formularza.
+- <button type="sumbit">         - submit mowi nam, ze prześle nam CAŁĄ zawartość z formularza, w którym się znajduje.
+- np. (ngSubmit)                 - Jest to obsługa zdarzeń.
+- [(ngModel)]="model.username"   - Pozwala na dwukierunkowy przepływ z komponentu do szablonu i na odwrót.
+                               //- [] - Z komponentu do szablonu   // - () Z szablonu do komponentu
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                       INFO
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- Komponent za każdym razem jest niszczony, gdy przechodzimy na inny komponent.
+        Tak nie jest w przypadku serwisów, które "żyją" dopóki użytkownik nie wyłączy przeglądarki.
+- Ustawienie co ta wartość otrzymuje (wstrzykiwanie)         x: int            /         Dodanie coś do wartości x = ''        
+- constructor(private accountService:AccountService) { }         /Wstrzykujemy do komponentu do konstruktora nasz serwis.
+- Jeśli subskrybujemy HTTP to nie musimy sie odsubskrybowywac. Jesli jest inaczej to powinniśmy to zrobić.
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                      PRZYDATNE
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ng g guard [name] --skip-tests     //- tworzy "strażnika", który sprawdza argumenty i nie pozwala przejsc na jakies podstrony.
+ng g module [name]                 //- 
+               //  --flat nie tworzy dodatkowego folderu
+zmiana w launchSettings z developer na production pozwala na testowanie wyświetlania errorów.
