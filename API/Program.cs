@@ -1,6 +1,7 @@
 using System.Text;
 using Api.Data;
 using API.Data;
+using API.Helpers;
 using API.Interfaces;
 using API.Middleware;
 using API.Service;
@@ -23,6 +24,10 @@ builder.Services.AddCors();
 builder.Services.AddScoped<ITokenServices, TokenService>();       //     -Usługa z dłuższą żywotnością.
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));              //Pobniera konfiguracje z innego pliku.
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)    //Autoryzacja za pomocą tokenu
     .AddJwtBearer(options =>{
         options.TokenValidationParameters = new TokenValidationParameters{     //Zasady jakie serwer powinien walidowac, ze ten token to odpowiedni token.

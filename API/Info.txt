@@ -68,3 +68,4 @@ ng g guard [name] --skip-tests     //- tworzy "strażnika", który sprawdza argu
 ng g module [name]                 //- 
                //  --flat nie tworzy dodatkowego folderu
 zmiana w launchSettings z developer na production pozwala na testowanie wyświetlania errorów.
+Services pozwalają na przechowywanie komponentów i z tym związanych danych z api dzięki czemu nie ładujemy ponownie czegoś z API.

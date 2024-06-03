@@ -70,3 +70,7 @@ E:\Projekty-Strony\.NET\DatingAppNet\API\bin\Debug\net7.0\Microsoft.AspNetCore.A
 E:\Projekty-Strony\.NET\DatingAppNet\API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
 E:\Projekty-Strony\.NET\DatingAppNet\API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\Projekty-Strony\.NET\DatingAppNet\api\bin\Debug\net7.0\Data\UserSeedData.json
+E:\Projekty-Strony\.NET\DatingAppNet\api\bin\Debug\net7.0\AutoMapper.dll
+E:\Projekty-Strony\.NET\DatingAppNet\api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Projekty-Strony\.NET\DatingAppNet\api\bin\Debug\net7.0\CloudinaryDotNet.dll
+E:\Projekty-Strony\.NET\DatingAppNet\api\bin\Debug\net7.0\Newtonsoft.Json.dll
