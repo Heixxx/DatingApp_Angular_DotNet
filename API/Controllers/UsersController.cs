@@ -3,6 +3,8 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Exception;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -22,12 +24,19 @@ public class UserController : BaseApiController {
         _photoService = photoService;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers() {           //async Task - Pomaga w odblokowaniu wątków.
+    [HttpGet]                                             //FromQuery -> pomagamy przeszukać gdzie się coś znajduje.
+    public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParams userParams) {           //async Task - Pomaga w odblokowaniu wątków.
         // var users = await _userRepository.Users.ToListAsync();                //await .ToListAsync  - Wykonuje sie i zwraca wynik gdy skonczy nie blokujac funkcji.
         // return users;                                                       //Wywala blad konwersji dlatego nizej robimy tak:
         // return Ok(await _userRepository.GetUsersAsync());                  //Stary sposób naprawy błędu.
-        var users = await _userRepository.GetMembersAsync();
+        var currentUser = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+        userParams.CurrentUsername = currentUser.UserName;
+        if (string.IsNullOrEmpty(userParams.Gender)){
+            userParams.Gender = currentUser.Gender == "male" ? "female": "male";
+        }
+        var users = await _userRepository.GetMembersAsync(userParams);
+        Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
+        
         return Ok(users);
     }
 

@@ -1,0 +1,15 @@
+# Foldery zależności
+node_modules/
+.bower_components/
+
+# Pliki kompilacji
+dist/
+build/
+.angular/
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Pliki środowiskowe
+.env
