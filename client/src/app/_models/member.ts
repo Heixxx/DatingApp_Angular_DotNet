@@ -1,6 +1,8 @@
 import { Photo } from "./photo";
 
 export interface Member{
+  pagination: any;
+  result: any;
   id:number;
   userName:string;
   photoUrl:string;
