@@ -5,7 +5,7 @@ node_modules/
 # Pliki kompilacji
 dist/
 build/
-.angular/
+client/.angular/
 
 # Pliki systemowe
 .DS_Store
